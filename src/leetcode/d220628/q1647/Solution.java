@@ -1,4 +1,4 @@
-package d220628.q1647;
+package leetcode.d220628.q1647;
 
 import java.util.*;
 

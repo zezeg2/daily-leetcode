@@ -1,4 +1,4 @@
-package d220627.q1689;
+package leetcode.d220627.q1689;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package d220703.q376;
+package leetcode.d220703.q376;
 
 import java.util.ArrayList;
 import java.util.List;

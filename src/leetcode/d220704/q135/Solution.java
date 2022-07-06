@@ -1,7 +1,4 @@
-package d220704.q135;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+package leetcode.d220704.q135;
 
 public class Solution {
     static int candy(int[] ratings) {

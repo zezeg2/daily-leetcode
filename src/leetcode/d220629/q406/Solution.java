@@ -1,7 +1,5 @@
-package d220629.q406;
+package leetcode.d220629.q406;
 
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Solution {

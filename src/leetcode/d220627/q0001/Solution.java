@@ -1,4 +1,4 @@
-package d220627.q0001;
+package leetcode.d220627.q0001;
 
 import java.util.HashMap;
 import java.util.Map;

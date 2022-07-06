@@ -1,4 +1,4 @@
-package d220701.q1710;
+package leetcode.d220701.q1710;
 
 import java.util.PriorityQueue;
 

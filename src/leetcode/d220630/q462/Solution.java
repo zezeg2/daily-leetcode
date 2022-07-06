@@ -1,4 +1,4 @@
-package d220630.q462;
+package leetcode.d220630.q462;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package d220705.q128;
+package leetcode.d220705.q128;
 
 import java.util.HashSet;
 import java.util.Set;

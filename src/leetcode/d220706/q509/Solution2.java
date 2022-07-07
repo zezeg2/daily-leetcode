@@ -17,7 +17,7 @@ public class Solution2 {
     }
 
     public static void main(String[] args) {
-        int n = 5;
+        int n = 30;
         System.out.println(fib(n));
     }
 }

@@ -1,4 +1,4 @@
-package programmers.dp.expressbyN;
+package programmers.dynamicprogramming.expressbyN;
 
 import java.util.*;
 

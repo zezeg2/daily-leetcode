@@ -23,7 +23,6 @@ public class Solution {
         if (visited[h-1][w-1]) return;
         visited[h-1][w-1] = true;
 
-
         for (int i = 0; i < matHeight - h + 1; i++) {
             for (int j = 0; j < matWidth - w + 1; j++) {
                 int finalJ = j;

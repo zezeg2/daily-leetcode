@@ -25,8 +25,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int n = 10;
-        int k = 5;
+        int n = 3;
+        int k = 2;
         System.out.println(kInversePairs(n,k));
     }
 }

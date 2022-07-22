@@ -1,4 +1,4 @@
-package programmers.dynamicprogramming.expressbyN;
+package programmers.dynamicprogramming.N으로표현;
 
 import java.util.*;
 

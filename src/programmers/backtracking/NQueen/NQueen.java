@@ -1,4 +1,4 @@
-package programmers.backtracking;
+package programmers.backtracking.NQueen;
 
 public class NQueen {
     boolean[] visited;

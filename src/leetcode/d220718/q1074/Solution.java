@@ -1,8 +1,6 @@
-package leetcode.q220718.q1074;
+package leetcode.d220718.q1074;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Solution {
     static int result;

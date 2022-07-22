@@ -1,4 +1,4 @@
-package programmers.dfs;
+package programmers.dfs.네트워크;
 
 import java.util.Set;
 import java.util.TreeSet;

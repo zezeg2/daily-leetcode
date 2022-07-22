@@ -1,4 +1,4 @@
-package programmers.dfs;
+package programmers.dfs.타켓넘버;
 
 public class TargetNumber {
 

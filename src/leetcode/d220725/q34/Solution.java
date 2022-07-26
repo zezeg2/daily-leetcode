@@ -14,7 +14,7 @@ public class Solution {
             else if (nums[mid] < target) left = mid + 1;
             else right = mid - 1;
         }
-        if (left > right || nums.length == 0) return new int[]{-1, 1};
+        if (left > right || nums.length == 0) return new int[]{-1, -1};
 
         int count = 0;
         boolean rightCheck = false;
@@ -22,13 +22,28 @@ public class Solution {
         while (!rightCheck || !leftCheck) {
             count++;
 
-            if (!rightCheck && nums[mid + count] != target) {
-                right = mid + count - 1;
-                rightCheck = true;
+
+            if (!rightCheck) {
+                if (mid + count >= nums.length) {
+                    right = mid + count - 1;
+                    rightCheck = true;
+                } else {
+                    if (nums[mid + count] != target) {
+                        right = mid + count - 1;
+                        rightCheck = true;
+                    }
+                }
             }
-            if (!leftCheck && nums[mid - count] != target) {
-                left = mid - count + 1;
-                leftCheck = true;
+            if (!leftCheck) {
+                if (mid - count < 0) {
+                    left = mid - count + 1;
+                    leftCheck = true;
+                } else {
+                    if (nums[mid - count] != target) {
+                        left = mid - count + 1;
+                        leftCheck = true;
+                    }
+                }
             }
         }
         return new int[]{left, right};

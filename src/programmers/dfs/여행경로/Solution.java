@@ -1,4 +1,4 @@
-package programmers.여행경로;
+package programmers.dfs.여행경로;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package programmers.여행경로;
+package programmers.dfs.여행경로;
 
 import java.util.*;
 
@@ -18,14 +18,13 @@ public class WrongSolution {
         }
 
         String curr;
-        String next;
+        String next = null;
 
         stack.add("ICN");
         while(!stack.isEmpty()){
             curr = stack.pop();
             ansList.add(curr);
-            if (!map.keySet().contains(curr)) next = null;
-            else next = map.get(curr).poll();
+            if (map.keySet().contains(curr)) next = map.get(curr).poll();
 
             if (next == null) break;
             stack.add(next);

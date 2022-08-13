@@ -11,7 +11,6 @@ public class Solution {
         List<int[][]> finalList = new ArrayList<>();
         int length = game_board.length;
 
-
         List<int[][]> leftList = new ArrayList<>();
         List<int[][]> puzzleList = new ArrayList<>();
 
@@ -36,9 +35,9 @@ public class Solution {
                         }
                     }
                 }
-                left = split(left);
+                left = sliceBlank(left);
                 left = rotate(left);
-                left = split(left);
+                left = sliceBlank(left);
                 leftList.add(left);
             }
         }
@@ -57,16 +56,13 @@ public class Solution {
                     table[px][py] = 0;
                     puzzle[px][py] = 1;
                     for (int i = 0; i < 4; i++) {
-                        if (px + dx[i] < 0 || py + dy[i] < 0 || px + dx[i] > length - 1 || py + dy[i] > length - 1)
-                            continue;
-                        if (table[px + dx[i]][py + dy[i]] == 1) {
-                            queue.add(new int[]{px + dx[i], py + dy[i]});
-                        }
+                        if (px + dx[i] < 0 || py + dy[i] < 0 || px + dx[i] > length - 1 || py + dy[i] > length - 1) continue;
+                        if (table[px + dx[i]][py + dy[i]] == 1) queue.add(new int[]{px + dx[i], py + dy[i]});
                     }
                 }
-                puzzle = split(puzzle);
+                puzzle = sliceBlank(puzzle);
                 puzzle = rotate(puzzle);
-                puzzle = split(puzzle);
+                puzzle = sliceBlank(puzzle);
                 puzzleList.add(puzzle);
             }
         }
@@ -86,44 +82,27 @@ public class Solution {
             }
         }
         for (int[][] f : finalList) {
-            for (int i = 0; i < f.length; i++) {
-                for (int j = 0; j < f[0].length; j++) {
-                    if (f[i][j] == 1) answer++;
-                }
-            }
+            for (int i = 0; i < f.length; i++) for (int j = 0; j < f[0].length; j++) if (f[i][j] == 1) answer++;
         }
         return answer;
     }
 
     public static boolean isEqual(int[][] first, int[][] second) {
-        if (first == second) {
-            return true;
-        }
-
-        if (first == null || second == null) {
-            return false;
-        }
-
-        if (first.length != second.length) {
-            return false;
-        }
+        if (first == second) return true;
+        if (first == null || second == null) return false;
+        if (first.length != second.length) return false;
 
         for (int i = 0; i < first.length; i++) {
-            if (first[i].length != second[i].length) {
-                return false;
-            }
+            if (first[i].length != second[i].length) return false;
 
             for (int j = 0; j < first[i].length; j++) {
-                if (first[i][j] != second[i][j]) {
-                    return false;
-                }
+                if (first[i][j] != second[i][j]) return false;
             }
         }
-
         return true;
     }
 
-    static int[][] split(int[][] arr) {
+    static int[][] sliceBlank(int[][] arr) {
         int start = 0;
         int end = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -145,12 +124,7 @@ public class Solution {
         int n = arr.length;
         int m = arr[0].length;
         int[][] rotate = new int[m][n];
-
-        for (int i = 0; i < rotate.length; i++) {
-            for (int j = 0; j < rotate[i].length; j++) {
-                rotate[i][j] = arr[n - 1 - j][i];
-            }
-        }
+        for (int i = 0; i < rotate.length; i++) for (int j = 0; j < rotate[i].length; j++) rotate[i][j] = arr[n - 1 - j][i];
 
         return rotate;
     }

@@ -20,9 +20,9 @@ public class Solution {
 
         while (!list.isEmpty()){
             int[] node = list.remove(0);
-            if (!findParent(parents, node[0], node[1])){
-                int a = getParent(parents, node[0]);
-                int b = getParent(parents, node[1]);
+            if (!isSameParent(parents, node[0], node[1])){
+                int a = findParent(parents, node[0]);
+                int b = findParent(parents, node[1]);
                 if (a < b) parents[b] = a;
                 else parents[a] = b;
                 answer += node[2];
@@ -34,23 +34,23 @@ public class Solution {
     }
 
 
-    static int getParent(int[] parent, int a){
+    static int findParent(int[] parent, int a){
         if (parent[a] == a) return a;
-        return getParent(parent, parent[a]);
+        return findParent(parent, parent[a]);
     }
-    static boolean findParent(int[] parent, int a, int b){
-        a = getParent(parent, a);
-        b = getParent(parent, b);
+    static boolean isSameParent(int[] parent, int a, int b){
+        a = findParent(parent, a);
+        b = findParent(parent, b);
         if (a == b) return true;
         else return false;
     }
 
-//    static int unionParent(int[] parent, int a, int b){
-//        a = getParent(parent, a);
-//        b = getParent(parent, b);
-//        if (a < b) parent[b] = a;
-//        else parent[a] = b;
-//    }
+    static int unionParent(int[] parent, int a, int b){
+        a = findParent(parent, a);
+        b = findParent(parent, b);
+        if (a < b) parent[b] = a;
+        else parent[a] = b;
+    }
 
     public static void main(String[] args) {
         int[][] a = new int[][]{{0, 1, 5}, {1, 2, 3}, {2, 3, 3}, {3, 1, 2}, {3, 0, 4}, {2, 4, 6}, {4, 0, 7}};

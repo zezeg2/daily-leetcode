@@ -45,7 +45,7 @@ public class Solution {
         else return false;
     }
 
-    static int unionParent(int[] parent, int a, int b){
+    static void unionParent(int[] parent, int a, int b){
         a = findParent(parent, a);
         b = findParent(parent, b);
         if (a < b) parent[b] = a;

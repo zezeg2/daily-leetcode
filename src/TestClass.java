@@ -8,6 +8,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class TestClass {
 }
@@ -291,37 +292,37 @@ class Folders {
     }
 }
 
-class Node {
-    public int value;
-    public Node left, right;
-
-    public Node(int value, Node left, Node right) {
-        this.value = value;
-        this.left = left;
-        this.right = right;
-    }
-}
-
-class BinarySearchTree {
-    public static boolean contains(Node root, int value) {
-        if (root.value == value) return true;
-        else if (root.value > value) {
-            if (root.left == null) return false;
-            return contains(root.left, value);
-        } else {
-            if (root.right == null) return false;
-            return contains(root.right, value);
-        }
-    }
-
-    public static void main(String[] args) {
-        Node n1 = new Node(1, null, null);
-        Node n3 = new Node(3, null, null);
-        Node n2 = new Node(2, n1, n3);
-
-        System.out.println(contains(n2, 3));
-    }
-}
+//class Node {
+//    public int value;
+//    public Node left, right;
+//
+//    public Node(int value, Node left, Node right) {
+//        this.value = value;
+//        this.left = left;
+//        this.right = right;
+//    }
+//}
+//
+//class BinarySearchTree {
+//    public static boolean contains(Node root, int value) {
+//        if (root.value == value) return true;
+//        else if (root.value > value) {
+//            if (root.left == null) return false;
+//            return contains(root.left, value);
+//        } else {
+//            if (root.right == null) return false;
+//            return contains(root.right, value);
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        Node n1 = new Node(1, null, null);
+//        Node n3 = new Node(3, null, null);
+//        Node n2 = new Node(2, n1, n3);
+//
+//        System.out.println(contains(n2, 3));
+//    }
+//}
 
 class Song {
     private String name;
@@ -388,6 +389,7 @@ class SortedSearch {
         return 0;
 
     }
+
     public static int countNumbers(int[] sortedArray, int lessThan) {
         int start = 0;
         int end = sortedArray.length - 1;
@@ -412,7 +414,7 @@ class SortedSearch {
     }
 
     public static void main(String[] args) {
-        System.out.println(SortedSearch.countNumbers(new int[]{0,1,2,3,5,7,9,11,14}, 4));
+        System.out.println(SortedSearch.countNumbers(new int[]{0, 1, 2, 3, 5, 7, 9, 11, 14}, 4));
     }
 }
 
@@ -420,21 +422,26 @@ class SortedSearch {
 class TrainComposition {
 
     LinkedList<Integer> wagons = new LinkedList<Integer>();
+
     public void attachWagonFromLeft(int wagonId) {
         wagons.addFirst(wagonId);
     }
+
     public void attachWagonFromRight(int wagonId) {
         wagons.addLast(wagonId);
     }
+
     public int detachWagonFromLeft() {
         if (!wagons.isEmpty()) return wagons.removeFirst();
         else throw new IndexOutOfBoundsException("No wagons available");
     }
+
     public int detachWagonFromRight() {
         if (!wagons.isEmpty()) return wagons.removeLast();
         else throw new IndexOutOfBoundsException("No wagons available");
     }
-    public static void main (String[] args){
+
+    public static void main(String[] args) {
         TrainComposition train = new TrainComposition();
         train.attachWagonFromLeft(7);
         train.attachWagonFromLeft(13);
@@ -443,4 +450,137 @@ class TrainComposition {
     }
 }
 
+
+class RoutePlanner {
+
+    static int[] dx = {0, 0, 1, -1};
+    static int[] dy = {1, -1, 0, 0};
+
+    public static boolean routeExists(int fromRow, int fromColumn, int toRow, int toColumn,
+                                      boolean[][] mapMatrix) {
+        if (!mapMatrix[fromRow][fromColumn] || !mapMatrix[toRow][toColumn]) return false;
+        if (fromRow < 0 || fromColumn < 0 || toRow < 0 || toColumn < 0 || fromRow > mapMatrix.length - 1 || fromColumn < 0 || toRow < 0 || toColumn < 0)
+            return false;
+        boolean[][] visited = new boolean[mapMatrix.length][mapMatrix[0].length];
+
+
+        Stack<int[]> stack = new Stack<>();
+        stack.add(new int[]{fromRow, fromColumn});
+        while (!stack.isEmpty()) {
+            int[] pop = stack.pop();
+            visited[pop[0]][pop[1]] = true;
+            for (int i = 0; i < 4; i++) {
+                int nextX = pop[1] + dx[i];
+                int nextY = pop[0] + dy[i];
+
+                if (nextY < 0 || nextX < 0 || nextY > mapMatrix.length - 1 || nextX > mapMatrix[0].length - 1) continue;
+                if (visited[nextY][nextX] || !mapMatrix[nextY][nextX]) continue;
+                if (nextX == toRow && nextY == toColumn) return true;
+                else {
+                    stack.add(new int[]{nextY, nextX});
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        boolean[][] mapMatrix = {
+                {true, false, false},
+                {true, true, false},
+                {false, true, true}
+        };
+
+        System.out.println(routeExists(1, 0, 0, 2, mapMatrix));
+    }
+}
+
+class Node {
+    private Node leftChild, rightChild;
+
+    public int height = 0;
+
+    public Node(Node leftChild, Node rightChild) {
+        this.leftChild = leftChild;
+        this.rightChild = rightChild;
+    }
+
+    public Node getLeftChild() {
+        return this.leftChild;
+    }
+
+    public Node getRightChild() {
+        return this.rightChild;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int height() {
+        if (getLeftChild() == null && getRightChild() == null) {
+            return height;
+        } else if (getLeftChild() == null) {
+            getRightChild().setHeight(height + 1);
+            return rightChild.height();
+        } else if (getRightChild() == null) {
+            getLeftChild().setHeight(height + 1);
+            return leftChild.height();
+        } else {
+            getLeftChild().setHeight(height + 1);
+            getRightChild().setHeight(height + 1);
+            return Math.max(rightChild.height(), getLeftChild().height());
+        }
+    }
+
+    public static void main(String[] args) {
+        Node leaf1 = new Node(null, null);
+        Node leaf2 = new Node(null, null);
+        Node node = new Node(leaf1, null);
+        Node root = new Node(node, leaf2);
+
+        System.out.println(root.height());
+    }
+}
+
+class TestResults
+{
+    public static class Student implements Comparable<Student>{
+        private String name;
+        private int score;
+
+        public Student(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        @Override
+        public int compareTo(Student o) {
+            return o.getScore() - getScore();
+        }
+    }
+
+    public static List<String> studentsThatPass(Stream<Student> students, int passingScore) {
+        return students.filter(student -> student.getScore() >= passingScore).sorted().map(student -> student.name).collect(Collectors.toList());
+    }
+
+    public static void main(String[] args) {
+
+        List<Student> students = new ArrayList<Student>();
+
+        students.add(new Student("Alan", 21));
+        students.add(new Student("James", 57));
+        students.add(new Student("Mike", 80));
+
+        studentsThatPass(students.stream(), 50).forEach(System.out::println);
+    }
+}
 

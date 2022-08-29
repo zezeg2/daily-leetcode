@@ -573,14 +573,22 @@ class TestResults
     }
 
     public static void main(String[] args) {
+//
+//        List<Student> students = new ArrayList<Student>();
+//
+//        students.add(new Student("Alan", 21));
+//        students.add(new Student("James", 57));
+//        students.add(new Student("Mike", 80));
+//
+//        studentsThatPass(students.stream(), 50).forEach(System.out::println);
 
-        List<Student> students = new ArrayList<Student>();
-
-        students.add(new Student("Alan", 21));
-        students.add(new Student("James", 57));
-        students.add(new Student("Mike", 80));
-
-        studentsThatPass(students.stream(), 50).forEach(System.out::println);
+        ArrayList all = new ArrayList();
+        all.add(Integer.valueOf(1));
+        all.add("asd");
+        all.forEach(o -> {
+            if (o.getClass() == String.class) System.out.println("string");
+            if (o.getClass() == Integer.class) System.out.println("integer");
+        });
     }
 }
 

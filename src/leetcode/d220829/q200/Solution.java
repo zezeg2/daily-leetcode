@@ -1,5 +1,7 @@
 package leetcode.d220829.q200;
 
+import java.util.function.Function;
+
 public class Solution {
     public int numIslands(char[][] grid) {
         int count = 0;

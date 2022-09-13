@@ -72,20 +72,20 @@ public class Solution {
             }
         }
 
-        int mn = Integer.MAX_VALUE; // 산봉우리 번호
-        int mw = Integer.MAX_VALUE; // 최솟값
+        int minNumber = Integer.MAX_VALUE; // 산봉우리 번호
+        int minWeight = Integer.MAX_VALUE; // 최솟값
 
         // 정렬하지 않으면 12, 14, 15, 16, 17, 25번 문제 실패
         Arrays.sort(summits);
 
         for (int summit : summits) {
-            if (intensity[summit] < mw) {
-                mn = summit;
-                mw = intensity[summit];
+            if (intensity[summit] < minWeight) {
+                minNumber = summit;
+                minWeight = intensity[summit];
             }
         }
 
-        return new int[]{mn, mw};
+        return new int[]{minNumber, minWeight};
     }
 
     // num이 입구인지 확인

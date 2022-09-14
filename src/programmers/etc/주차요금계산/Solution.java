@@ -8,8 +8,7 @@ public class Solution {
     static SimpleDateFormat f = new SimpleDateFormat("HH:mm", Locale.KOREA);
 
     static int[] solution(int[] fees, String[] records) throws ParseException {
-        int[] answer = {};
-        Map<String, Integer> accumFees = new TreeMap<>();
+        Map<String, Integer> accumTime = new TreeMap<>();
         Map<String, String> inCars = new HashMap<>();
 
         for (String r : records) {
@@ -18,14 +17,9 @@ public class Solution {
             String carNum = split[1];
             String io = split[2];
 
-            if (@accumFees.containsKey(carNum))accumFees.put()
-
             if (io.equals("IN")) inCars.put(carNum, ioTime);
             else if (io.equals("OUT")) {
-                int bill = fees[1];
-                int td = timeDiff(ioTime, inCars.get(carNum));
-                if (td > fees[0]) bill += ((td - fees[0]) / fees[2]) * fees[3];
-                accumFees.put(carNum, accumFees.getOrDefault(carNum, 0) + bill);
+                accumTime.put(carNum, accumTime.getOrDefault(carNum, 0) + timeDiff(ioTime, inCars.get(carNum)));
                 inCars.remove(carNum);
             }
         }
@@ -33,9 +27,13 @@ public class Solution {
         for (Map.Entry<String, String> entry : inCars.entrySet()) {
             String k = entry.getKey();
             String v = entry.getValue();
-            accumFees.put(k, accumFees.getOrDefault(k, 0) + fees[1] + ((timeDiff("23:59", v) - fees[0]) / fees[2]) * fees[3]);
+            accumTime.put(k, accumTime.getOrDefault(k, 0) + timeDiff("23:59", v));
         }
-        int[] result = accumFees.values().stream().mapToInt(Integer::intValue).toArray();
+        int[] result = accumTime.values().stream().mapToInt(time -> {
+            if ((time - fees[0]) % fees[2] == 0)  return time > fees[0] ? fees[1] + ((time - fees[0]) / fees[2]) * fees[3] : fees[1];
+            return time > fees[0] ? fees[1] + ((time - fees[0]) / fees[2] + 1) * fees[3] : fees[1];
+
+        }).toArray();
         return result;
     }
 

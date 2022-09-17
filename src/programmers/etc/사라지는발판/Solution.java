@@ -29,6 +29,7 @@ public class Solution {
 
         // A 움직임
         if(a_depth == b_depth && board[a_x][a_y] == 1){
+
             for(int d=0;d<4;d++){
                 int nx = a_x + dx[d];
                 int ny = a_y + dy[d];

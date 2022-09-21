@@ -1,4 +1,4 @@
-package programmers.lv1.부족한금액계산;
+package programmers.weeklyChallange.부족한금액계산;
 
 public class Solution {
     public long solution(int price, int money, int count) {

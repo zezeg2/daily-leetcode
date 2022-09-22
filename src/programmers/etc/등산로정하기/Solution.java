@@ -1,4 +1,4 @@
-package programmers.etc.d220912.등산로정하기;
+package programmers.etc.등산로정하기;
 
 import java.util.*;
 

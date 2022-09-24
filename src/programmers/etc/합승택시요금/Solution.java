@@ -4,18 +4,14 @@ import java.util.*;
 
 public class Solution {
     static class Edge {
-        int node;
-        int weight;
-
+        int node, weight;
         public Edge(int node, int weight) {
             this.node = node;
             this.weight = weight;
         }
     }
-
     static int nodeNum;
     static Map<Integer, List<Edge>> map = new HashMap<>();
-
     static int solution(int n, int s, int a, int b, int[][] fares) {
         int minFare = Integer.MAX_VALUE;
         nodeNum = n;
@@ -27,12 +23,11 @@ public class Solution {
         }
         int[] interValues = dijkstra(s);
         for (int i = 1; i < interValues.length; i++) {
-            int[] from = dijkstra(i);
-            minFare = Math.min(minFare, interValues[i] + from[a] + from[b]);
+            int[] fromInter = dijkstra(i);
+            minFare = Math.min(minFare, interValues[i] + fromInter[a] + fromInter[b]);
         }
         return minFare;
     }
-
     static int[] dijkstra(int start) {
         int[] fares = new int[nodeNum + 1];
         Arrays.fill(fares, Integer.MAX_VALUE);

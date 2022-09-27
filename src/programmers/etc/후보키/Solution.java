@@ -3,9 +3,9 @@ package programmers.etc.후보키;
 import java.util.*;
 
 public class Solution {
-    List<String> candi = new ArrayList<>();
+    static List<String> candi = new ArrayList<>();
 
-    public int solution(String[][] relation) {
+    static int solution(String[][] relation) {
         int answer = 0;
 
         for (int i = 0; i < relation[0].length; i++) {
@@ -16,7 +16,7 @@ public class Solution {
         return answer;
     }
 
-    public void dfs(boolean[] visited, int start, int depth, int end, String[][] relation) {
+    static void dfs(boolean[] visited, int start, int depth, int end, String[][] relation) {
         if (depth == end) {
             List<Integer> list = new ArrayList<>();
             String key = "";
@@ -65,4 +65,16 @@ public class Solution {
         }
 
     }
+
+    public static void main(String[] args) {
+        String val = "[[\"100\",\"ryan\",\"music\",\"2\"],[\"200\",\"apeach\",\"math\",\"2\"],[\"300\",\"tube\",\"computer\",\"3\"],[\"400\",\"con\",\"computer\",\"4\"],[\"500\",\"muzi\",\"music\",\"3\"],[\"600\",\"apeach\",\"music\",\"2\"]]";
+        val = val.replaceAll("]", "}").replaceAll("\\[", "{");;
+        System.out.println(val);
+        String[][] relations = {{"100","ryan","music","2"},{"200","apeach","math","2"},{"300","tube","computer","3"},{"400","con","computer","4"},{"500","muzi","music","3"},{"600","apeach","music","2"}};
+        System.out.println(solution(relations));
+
+
+    }
+
+
 }

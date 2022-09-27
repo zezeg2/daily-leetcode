@@ -12,7 +12,7 @@ public class Solution {
     static List<Integer> postOrderList = new ArrayList<>();
 
     static int[][] solution(int[][] nodeinfo) {
-        for (int i = 0; i < nodeinfo.length; i++) nodeList.add(new Node(i+1, nodeinfo[i][0], nodeinfo[i][1]));
+        for (int i = 0; i < nodeinfo.length; i++) nodeList.add(new Node(i + 1, nodeinfo[i][0], nodeinfo[i][1]));
         nodeList.sort((o1, o2) -> o1.locY != o2.locY ? o2.locY - o1.locY : o1.locX - o2.locX);
 
         Node root = nodeList.get(0);
@@ -26,14 +26,15 @@ public class Solution {
 
     private static void findChild(Node root, int min, int max) {
         for (Node n : nodeList) {
-            if (root.left!= null && root.right != null) break;
-            if (root.locY <= n.locY ) continue;
+            if (root.left != null && root.right != null) break;
+            if (root.locY <= n.locY) continue;
             if (root.left == null && (n.locX < root.locX && n.locX > min)) root.left = n;
             if (root.right == null && (n.locX > root.locX && n.locX < max)) root.right = n;
         }
-        if (root.left!=null) findChild(root.left, min, root.locX);
-        if (root.right!=null) findChild(root.right, root.locX, max);
+        if (root.left != null) findChild(root.left, min, root.locX);
+        if (root.right != null) findChild(root.right, root.locX, max);
     }
+
     static class Node {
         int val, locX, locY;
         Node left, right;
@@ -44,11 +45,12 @@ public class Solution {
             this.locY = locY;
         }
     }
+
     static void getOrder(Node node) {
-        if(node != null) {
+        if (node != null) {
             preOrderList.add(node.val);
-            if(node.left != null) getOrder(node.left);
-            if(node.right != null) getOrder(node.right);
+            if (node.left != null) getOrder(node.left);
+            if (node.right != null) getOrder(node.right);
             postOrderList.add(node.val);
         }
     }

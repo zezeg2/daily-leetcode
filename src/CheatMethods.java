@@ -4,6 +4,8 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CheatMethods {
 
@@ -138,8 +140,10 @@ public class CheatMethods {
         }
     }
 
-
-
+    // 문자열 내 문자열 검샘
+    static Pattern pattern = Pattern.compile("");// TODO: 2022/09/27 문자열 내 특정 패턴으로 문자열 내 문자열을 찾을 수 있음
+    static Matcher matcher = pattern.matcher("// TODO: 2022/09/27  이 문자열 내부에서 패턴 검색" );
+    // 반복문과(while) matcher.find()를 통해 문자열 처음부터 끝까지 순차적으로 검색
 
     public static void main(String[] args) {
 

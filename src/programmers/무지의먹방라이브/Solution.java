@@ -47,8 +47,9 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        int[] food_times = {1, 1, 1, 1, 1};
-        long k = 1;
+//        int[] food_times = {1, 1, 1, 1, 1};
+        int[] food_times = {5,4,2,7,4,3,1};
+        long k = 14;
         System.out.println(solution(food_times, k));
     }
 }

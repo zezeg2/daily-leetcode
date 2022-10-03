@@ -145,8 +145,8 @@ public class CheatMethods {
     static Matcher matcher = pattern.matcher("// TODO: 2022/09/27  이 문자열 내부에서 패턴 검색" );
     // 반복문과(while) matcher.find()를 통해 문자열 처음부터 끝까지 순차적으로 검색
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        transBracket();
     }
 
 }

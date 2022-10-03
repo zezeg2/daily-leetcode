@@ -56,6 +56,7 @@ public class CheatMethods {
     // 다익스트라 알고리즘
     static class Edge {
         int node, weight;
+
         public Edge(int node, int weight) {
             this.node = node;
             this.weight = weight;
@@ -84,13 +85,15 @@ public class CheatMethods {
     }
 
     // 시간 변환 관련 메서드
-    static SimpleDateFormat f = new SimpleDateFormat("HH:mm:ss");
+    public static SimpleDateFormat f = new SimpleDateFormat("HH:mm:ss");
 
-    static int toSec(String time) throws ParseException {
-        return (int) (f.parse(time).getTime() / 1000);
+    // HH:mm:ss(String) ->  n second(int)
+    public static int toSec(String time) throws ParseException {
+        return (int) (f.parse(time).getTime() - f.parse("00:00:00").getTime() / 1000);
     }
 
-    static String secondToTime(int second) {
+    // n second(int) -> HH:mm:ss(String)
+    public static String secondToTime(int second) {
         StringBuilder sb = new StringBuilder();
         for (int i = 2; i >= 0; i--) {
             int t = second / (int) Math.pow(60, i);
@@ -103,49 +106,121 @@ public class CheatMethods {
     }
 
     //이진트리 노드 관련 메서드
-    static class Node {
+    public static class Node {
         int val;
         Node left, right;
-        Node(int val){
+
+        Node(int val) {
             this.val = val;
         }
     }
 
-    static List<Integer> orderList = new ArrayList<>();
+    public static List<Integer> orderList = new ArrayList<>();
 
     //전위순회 Preorder : Root -> Left -> Right
-    static void preOrder(Node node) {
-        if(node != null) {
+    public static void preOrder(Node node) {
+        if (node != null) {
             orderList.add(node.val);
-            if(node.left != null) preOrder(node.left);
-            if(node.right != null) preOrder(node.right);
+            if (node.left != null) preOrder(node.left);
+            if (node.right != null) preOrder(node.right);
         }
     }
 
     //중위 순회 Inorder : Left -> Root -> Right
-    static void inOrder(Node node) {
-        if(node != null) {
-            if(node.left != null) inOrder(node.left);
+    public static void inOrder(Node node) {
+        if (node != null) {
+            if (node.left != null) inOrder(node.left);
             orderList.add(node.val);
-            if(node.right != null) inOrder(node.right);
+            if (node.right != null) inOrder(node.right);
         }
     }
 
     //후위순회 Postorder : Left -> Right -> Root
-    static void postOrder(Node node) {
-        if(node != null) {
-            if(node.left != null) postOrder(node.left);
-            if(node.right != null) postOrder(node.right);
+    public static void postOrder(Node node) {
+        if (node != null) {
+            if (node.left != null) postOrder(node.left);
+            if (node.right != null) postOrder(node.right);
             orderList.add(node.val);
         }
     }
 
-    // 문자열 내 문자열 검샘
-    static Pattern pattern = Pattern.compile("");// TODO: 2022/09/27 문자열 내 특정 패턴으로 문자열 내 문자열을 찾을 수 있음
-    static Matcher matcher = pattern.matcher("// TODO: 2022/09/27  이 문자열 내부에서 패턴 검색" );
+    // 문자열 내 문자열 검색
+    public static Pattern pattern = Pattern.compile("");// TODO: 2022/09/27 문자열 내 특정 패턴으로 문자열 내 문자열을 찾을 수 있음
+    public static Matcher matcher = pattern.matcher("// TODO: 2022/09/27  이 문자열 내부에서 패턴 검색");
     // 반복문과(while) matcher.find()를 통해 문자열 처음부터 끝까지 순차적으로 검색
 
-    public static void main(String[] args) throws IOException {
+    // m*n 배열 90도 회전
+    public static int[][] rotate(int[][] arr) {
+        int n = arr.length;
+        int m = arr[0].length;
+        int[][] rotate = new int[m][n];
+
+        for (int i = 0; i < rotate.length; i++) {
+            for (int j = 0; j < rotate[i].length; j++) {
+                rotate[i][j] = arr[n - 1 - j][i];
+            }
+        }
+
+        return rotate;
+    }
+
+    // m*n 배열 상하 반전
+    public static int[][] reverseTopBottom(int[][] arr) {
+        int n = arr.length;
+        int m = arr[0].length;
+        int[][] reversed = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                reversed[i][j] = arr[n - i - 1][j];
+            }
+        }
+
+        return reversed;
+    }
+
+    // m*n 배열 좌우 반전
+    public static int[][] reverseLeftRight(int[][] arr) {
+        int n = arr.length;
+        int m = arr[0].length;
+        int[][] reversed = new int[n][m];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                reversed[i][j] = arr[i][n - j];
+            }
+        }
+        return reversed;
+    }
+
+    public static int[] parent = new int[1000001];
+
+
+    // Union - Find -> 두 노드가 같은 그래프에 속하는지 확인하는 알고리즘
+    public static void union(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x < y) parent[y] = x;
+        else parent[x] = y;
+    }
+    public static int find(int x) {
+        if (x == parent[x])
+            return x;
+        else
+            return parent[x] = find(parent[x]);
+    }
+
+    // 같은 부모 노드를 가지는지 확인
+    public static boolean isSameParent(int x, int y) {
+        x = find(x);
+        y = find(y);
+        if (x == y)
+            return true;
+        else
+            return false;
+    }
+
+    public static void main(String[] args) throws IOException, ParseException {
         transBracket();
     }
 

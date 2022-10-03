@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class CheatMethods {
 
     // 괄호 변환시키기(테스트케이스 입력값 변환)
-    static void transBracket() throws IOException {
+    public static void transBracket() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));         // 입력 데이터 읽기
         String val = reader.readLine();  // Hi Anna
         val = val.replaceAll("]", "}").replaceAll("\\[", "{");
@@ -18,7 +18,7 @@ public class CheatMethods {
     }
 
     //조합
-    static void combination(int[] arr, boolean[] visited, int start, int r, String s) {
+    public static void combination(int[] arr, boolean[] visited, int start, int r, String s) {
         if (r == 0) {
             // TODO: 2022/09/27 조합식 이후로 할 동작
             System.out.println(s);
@@ -35,7 +35,7 @@ public class CheatMethods {
     }
 
     //순열
-    static void permutation(int[] arr, boolean[] visited, int r, String s) {
+    public static void permutation(int[] arr, boolean[] visited, int r, String s) {
         if (r == 0) {
             // TODO: 2022/09/27 순열식 이후로 할 동작
             System.out.println(s);
@@ -54,7 +54,7 @@ public class CheatMethods {
 
 
     // 다익스트라 알고리즘
-    static class Edge {
+    public static class Edge {
         int node, weight;
 
         public Edge(int node, int weight) {
@@ -63,10 +63,10 @@ public class CheatMethods {
         }
     }
 
-    static int nodeNum;
-    static Map<Integer, List<Edge>> graph = new HashMap<>(); // TODO: 2022/09/27 문제 조건에 따라 그래프 만들기
+    public static int nodeNum;
+    public static Map<Integer, List<Edge>> graph = new HashMap<>(); // TODO: 2022/09/27 문제 조건에 따라 그래프 만들기
 
-    static int[] dijkstra(int start) {
+    public static int[] dijkstra(int start) {
         int[] totalCost = new int[nodeNum + 1];
         Arrays.fill(totalCost, Integer.MAX_VALUE);
         PriorityQueue<Edge> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o.weight));
@@ -160,7 +160,6 @@ public class CheatMethods {
                 rotate[i][j] = arr[n - 1 - j][i];
             }
         }
-
         return rotate;
     }
 
@@ -175,7 +174,6 @@ public class CheatMethods {
                 reversed[i][j] = arr[n - i - 1][j];
             }
         }
-
         return reversed;
     }
 
@@ -218,6 +216,13 @@ public class CheatMethods {
             return true;
         else
             return false;
+    }
+
+    // 2차원배열 깊은 복사
+    public static int[][] copyMatrix(int[][] origin) {
+        int[][] copied = new int[origin.length][origin[0].length];
+        for (int i = 0; i < origin.length; i++) copied[i] = Arrays.copyOf(origin[i], origin[i].length);
+        return copied;
     }
 
     public static void main(String[] args) throws IOException, ParseException {

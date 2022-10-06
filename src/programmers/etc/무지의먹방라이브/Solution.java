@@ -1,4 +1,4 @@
-package programmers.무지의먹방라이브;
+package programmers.etc.무지의먹방라이브;
 
 import java.util.Arrays;
 

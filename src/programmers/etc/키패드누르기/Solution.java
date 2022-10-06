@@ -1,4 +1,4 @@
-package programmers.키패드누르기;
+package programmers.etc.키패드누르기;
 
 import java.util.HashMap;
 import java.util.Map;

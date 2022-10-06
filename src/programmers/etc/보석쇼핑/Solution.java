@@ -1,4 +1,4 @@
-package programmers.보석쇼핑;
+package programmers.etc.보석쇼핑;
 
 import java.util.*;
 
@@ -12,24 +12,20 @@ public class Solution {
         int max = Integer.MIN_VALUE;
         int gap = Integer.MAX_VALUE;
         String s = null;
-
         for (int i = 0; i < gems.length; i++) {
             map.put(gems[i], i);
             max = i;
-
             if (gemSet.size() == map.size()) {
                 if (s == null || s.equals(gems[i])) {
                     Map.Entry<String, Integer> e = map.entrySet().stream().min(Comparator.comparingInt(o -> o.getValue())).get();
                     s = e.getKey();
                     min = e.getValue();
                 }
-
                 int prevGap = gap;
                 gap = Math.min(gap, max - min);
                 if (gap != prevGap) answer = new int[]{min + 1, max + 1};
             }
         }
-
         return answer;
     }
 

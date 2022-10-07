@@ -225,6 +225,20 @@ public class CheatMethods {
         return copied;
     }
 
+    // 이진탐색으로 정렬된 ArrayList 에 원소 추가
+    public static List<Integer> list = new ArrayList<>();
+    public static void insertElement(int target) {
+        int left = 0;
+        int right = list.size() - 1;
+        while (left <= right){
+            int mid = (left + right) / 2;
+            if (list.get(mid) > target) right = mid - 1;
+            else left = mid + 1;
+        }
+        int idx = Math.max(left,right);
+        list.add(idx, target);
+    }
+
     public static void main(String[] args) throws IOException, ParseException {
         transBracket();
     }

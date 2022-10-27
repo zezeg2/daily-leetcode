@@ -12,12 +12,12 @@ class Node{
     }
 }
 
-class MyCalendar {
+class MyCal {
 
     Node root ;
 
 
-    public MyCalendar() {
+    public MyCal() {
         this.root = null;
 
     }

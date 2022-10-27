@@ -66,6 +66,7 @@ public class SolutionTimeLimit {
         if (idx <= pointer) pointer++;
         table.add(idx, restored);
     }
+
     public static void main(String[] args) {
         System.out.println(solution(8,2,new String[]{"D 2","C","U 3","C","D 4","C","U 2","Z","Z","U 1","C"}));
     }

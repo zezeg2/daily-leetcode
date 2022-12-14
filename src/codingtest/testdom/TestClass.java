@@ -1,3 +1,5 @@
+package codingtest.testdom;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
@@ -53,8 +55,6 @@ class MapAlertDAO implements AlertDAO {
         return this.alerts.get(id);
     }
 }
-
-//------------------------------------------------------------------------------
 class IceCreamMachine {
     public String[] ingredients;
     public String[] toppings;
@@ -92,18 +92,11 @@ class IceCreamMachine {
         });
         List<IceCream> scoops = machine.scoops();
 
-        /*
-         * Should print:
-         * vanilla, chocolate sauce
-         * chocolate, chocolate sauce
-         */
         for (IceCream iceCream : scoops) {
             System.out.println(iceCream.ingredient + ", " + iceCream.topping);
         }
     }
 }
-
-//-----------------------------------------------------------------
 
 class MergeNames {
 
@@ -134,7 +127,7 @@ class QuadraticEquation {
 
     public static void main(String[] args) {
         Roots roots = QuadraticEquation.findRoots(2, 10, 8);
-        System.out.println("Roots: " + roots.x1 + ", " + roots.x2);
+        System.out.println("codingtest.testdom.Roots: " + roots.x1 + ", " + roots.x2);
     }
 }
 
@@ -198,7 +191,6 @@ class TwoSum {
     }
 }
 
-//---------------------------------------------------------------------
 
 class DecoratorStream extends OutputStream {
     private OutputStream stream;
@@ -281,48 +273,8 @@ class Folders {
         Collection<String> names = folderNames(xml, 'u');
         for (String name : names)
             System.out.println(name);
-
-//        String a = "folder name=\"aasdkjh\"";
-//
-//        System.out.println(a.indexOf("folder name=\""));
-//
-//        a = a.substring(a.indexOf("folder name=\"") + 13);
-//        a = a.substring(a.indexOf("\""));
-//        System.out.println(a);
     }
 }
-
-//class Node {
-//    public int value;
-//    public Node left, right;
-//
-//    public Node(int value, Node left, Node right) {
-//        this.value = value;
-//        this.left = left;
-//        this.right = right;
-//    }
-//}
-//
-//class BinarySearchTree {
-//    public static boolean contains(Node root, int value) {
-//        if (root.value == value) return true;
-//        else if (root.value > value) {
-//            if (root.left == null) return false;
-//            return contains(root.left, value);
-//        } else {
-//            if (root.right == null) return false;
-//            return contains(root.right, value);
-//        }
-//    }
-//
-//    public static void main(String[] args) {
-//        Node n1 = new Node(1, null, null);
-//        Node n3 = new Node(3, null, null);
-//        Node n2 = new Node(2, n1, n3);
-//
-//        System.out.println(contains(n2, 3));
-//    }
-//}
 
 class Song {
     private String name;
@@ -573,15 +525,6 @@ class TestResults
     }
 
     public static void main(String[] args) {
-//
-//        List<Student> students = new ArrayList<Student>();
-//
-//        students.add(new Student("Alan", 21));
-//        students.add(new Student("James", 57));
-//        students.add(new Student("Mike", 80));
-//
-//        studentsThatPass(students.stream(), 50).forEach(System.out::println);
-
         ArrayList all = new ArrayList();
         all.add(Integer.valueOf(1));
         all.add("asd");

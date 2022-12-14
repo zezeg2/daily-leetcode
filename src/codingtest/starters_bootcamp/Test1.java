@@ -1,6 +1,8 @@
+package codingtest.starters_bootcamp;
+
 import java.util.*;
 
-public class Test {
+public class Test1 {
     static String[] solution(int n , String[] queries){
         Map<String, Integer> map  = new HashMap<>();
         List<String> list = new ArrayList<>();

@@ -1,4 +1,4 @@
-package programmers.공이동시뮬레이션;
+package programmers.etc.공이동시뮬레이션;
 
 class Solution {
     public long solution(int n, int m, int x, int y, int[][] queries) {

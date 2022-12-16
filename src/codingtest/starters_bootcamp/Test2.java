@@ -1,3 +1,5 @@
+package codingtest.starters_bootcamp;
+
 import java.util.*;
 
 public class Test2 {
